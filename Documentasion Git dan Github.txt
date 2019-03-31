@@ -104,6 +104,7 @@ git branch -d [nama cabang]
 
 # REMOTE REPOSITORY
 # Buat repositori di github atau layanan yang lain
+/** Tapi Jangan buat readme.md dulu saat membuat repositori remote karena dapat membuat error saat push dan pull dengan repositori lokal, peraturan ini berlaku ketika kita ingin menghubungkan repositori lokal dengan repositori remote. Seteleh repositori lokal sudah terhubung dengan repositori remote baru buat readmi.md. Peraturan ini tidak berlaku jiaka repositorinya hanya ingin di clone boleh membuat readme.md nya saat pertama kali membuat repositori remote **/
 # Buat atau buka repositori lokal
 # Menambahkan remote 
 git remote add [nama remote] [URL Remote]
