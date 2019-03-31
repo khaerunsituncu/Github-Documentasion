@@ -1,0 +1,129 @@
+# DOCUMENTASI GIT
+# INSTALL GIT
+# Debian Family
+sudo apt install git
+# Fedora
+yum install git
+# Arc Linux Family
+sudo pacman -S git
+
+# Lihat Versi Git
+git --version
+
+# Konfigurasi awal yang harus dilakukan
+# Bila memiliki github,gitlab, dll maka user dan emailnya harus sama agar mudah di integrasikan
+git config --global user.name "khaerunsituncu"
+git congig --global user.email khaerunsituncu@gmail.com
+# Konfigurasi optional
+git config --global core.editor=nama_editor
+# Melihat Konfigurasi
+git config --list
+
+# MEMBUAT REPOSITORY
+# Inisialisasi Nama-Directory
+git init <nama-folder>
+# Inisialisasi Working-Directory
+git init .
+# Inisialisasi Berdasarkan Alamat Directory
+git init /folder/folder
+
+# .gitignore, file yang berisi daftar nama-nama file dan direktori yang di abaikan git
+# Buat .gitignore di root direktori proyek/repositori
+# contoh isi file .gitignore
+/nama-folder/
+namafile.css
+
+# Melihat status repositori
+git status
+# Kondisi file ada 3, modified, staged, dan commited
+# modified, file yang sudah di ubah tapi belum ditandai dan disimpapn di version control
+# staged, revisi sudah ditandai
+# commited, revisi sudah disimpan di version control
+# Mengubah file modified ke staged
+git add nama-direktori/nama-file
+git add nama-direktori/nama-file nama-direktori/nama-file nama-direktori/nama-file
+git add *.html
+git add .
+# Mengubah file staged ke commited
+git commit -m "Commit Pertama"
+
+# MELIHAT LOG REVISI
+git log
+# Log yang lebih pendek
+git log --oneline
+# Log pada nomor Revisi/Commit
+git log nomor-revisi
+# Log pada file tertentu
+git log <namafile>
+# Log revisi yang dilakukan oleh author
+git log --author='khaerunsituncu'
+# Log remote 
+git log <nama remote>/<nama cabang> --oneline
+git log github/master
+
+# MELIHAT PERBANDINGAN REVISI
+git diff <nomor-revisi>
+# Melihat perbandingan pada file
+git diff <namafile>
+# Melihat perbandingan antar Revisi/Commit
+git diff <nomor commit> <nomor commit>
+# Melihat perbandingan antar cabang(Branch)
+git diff <nama cabang> <nama cabang>
+#git diff <nama cabang lokal> <nama cabang repositori remote>
+git diff master github/master
+
+# MEMBATALKAN REVISI
+# Membatalkan revisi file yang belum staged ataupun commited
+git checkout <namafile>
+# Membatalkan perubahan file yang sudah kondisi staged
+# Membuat kondisi staged ke modified
+git reset <namafile>
+git checkout <namafile>
+# Memebatalkan perubahan file yang sudah commited
+git checkout <nomor-revisi> // seluruh file akan di kembalikan
+git checkout <nomor-revisi> <namafile>
+git reset <namafile>
+git checkout <namafile>
+# Kembali ke 3 commit sebelumnya
+git checkout HEAD~3 <namafile>
+# Membatalkan semua perubahan yang ada
+git revert -n <nomor commit>
+
+# PERCABANGAN (BRANCH)
+# Membuat Branch/percabangan 
+git branch <nama cabang>
+# Melihat Cabang, bila ada * berarti cabang sedang aktif
+git branch
+# Pindah ke Cabang
+git checkout <nama cabang>
+# Menggabung Cabang
+git checkout master
+git merge <nama cabang>
+# Menghapus Cabang
+git branch -d <nama cabang>
+
+# REMOTE REPOSITORY
+# Buat repositori di github atau layanan yang lain
+# Buat atau buka repositori lokal
+# Menambahkan remote 
+git remote add <nama remote> <URL Remote>
+git remote add github https://github.com/khaerunsituncu/CPP.git
+# Mengubah nama remote
+git remote rename <nama remote lama> <nama remote baru>
+# Hapus Remote
+git remote remove <nama remote>
+# Mengirim revisi ke Remote Repositori
+git push <nama remote> master
+# Mengambil Revisi dari remote repositori
+# Mengambil revisi saja dan tidak langsung merge(menggabung) terhadap repositori
+git fetch <nama remote> <nama cabang>
+# Mengambil revisi dan langsung merge(menggabung)
+git pull <nama remote> <nama cabang>
+
+# Clone Repositori Remote
+git clone <url-repositori> <alamat penyimpanan di komputer lokal>
+git clone https://github.com/khaerunsituncu/CPP.git Documents/Khaeun\ Siuncu/Belajar/C++
+
+# Tambahan
+-nama cabang remote repositori <nama remote>/<nama cabang remote> contoh: github/master
+-nama default remote repositori adalah origin apabila kita meng clone repositori online
